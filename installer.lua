@@ -19,8 +19,10 @@ function printCentered(text)
 end
 function writeCentered(text, yPos)
 	w, h = term.getSize()
+	_xPos, _yPos = term.getCursorPos()
 	term.setCursorPos(math.floor(w - #text)/2, yPos)
 	write(text)
+	term.setCursorPos(_xPos, _yPos)
 end
 
 
