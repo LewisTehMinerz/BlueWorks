@@ -1,108 +1,22 @@
 if not term.isColor() then
-	error("BlueWorks requires an advanced computer to operate!", 0)
+	error("BlueWorks cannot run with a standard computer! Upgrade to an advanced computer to use BlueWorks.", 0)	
+end
+term.setTextColor(colors.blue)
+print([[
+    ____  __         _       __           __       
+   / __ )/ /_  _____| |     / /___  _____/ /_______
+  / __  / / / / / _ \ | /| / / __ \/ ___/ //_/ ___/
+ / /_/ / / /_/ /  __/ |/ |/ / /_/ / /  / ,< (__  ) 
+/_____/_/\__,_/\___/|__/|__/\____/_/  /_/|_/____/  
+                                                   	
+]])
+
+function printCentered(text)
+	w, h = term.getSize()
+	term.setCursorPos(math.floor(w - #text)/2, yPos)
+	print(text)
 end
 
-
---MultHub/CCInstaller
-
-local files = {
-}
-
-local githubUser    = "LewisTehMinerz"
-local githubRepo    = "BlueWorks"
-local githubBranch  = "master"
-
-local installerName = "BlueWorks Installer"
-
-local function clear()
-	term.clear()
-	term.setCursorPos(1, 1)
-end
-
-local function httpGet(url, save)
-	if not url then
-		error("not enough arguments, expected 1 or 2", 2)
-	end
-	local remote = http.get(url)
-	if not remote then
-		return false
-	end
-	local text = remote.readAll()
-	remote.close()
-	if save then
-		local file = fs.open(save, "w")
-		file.write(text)
-		file.close()
-		return true
-	end
-	return text
-end
-
-local function get(user, repo, bran, path, save)
-	if not user or not repo or not bran or not path then
-		error("not enough arguments, expected 4 or 5", 2)
-	end
-    local url = "https://raw.github.com/"..user.."/"..repo.."/"..bran.."/"..path
-	local remote = http.get(url)
-	if not remote then
-		return false
-	end
-	local text = remote.readAll()
-	remote.close()
-	if save then
-		local file = fs.open(save, "w")
-		file.write(text)
-		file.close()
-		return true
-	end
-	return text
-end
-
-local function getFile(file, target)
-	return get(githubUser, githubRepo, githubBranch, file, target)
-end
-
-shell.setDir("")
-
-clear()
-
-print(installerName or ("Installer for " .. githubUser .. "/" .. githubRepo .. ", branch " .. githubBranch))
-print("Getting files...")
-local fileCount = 0
-for _ in pairs(files) do
-	fileCount = fileCount + 1
-end
-local filesDownloaded = 0
-
-local w, h = term.getSize()
-
-for k, v in pairs(files) do
-	term.setTextColor(colors.black)
-	term.setBackgroundColor(colors.white)
-	clear()
-	term.setCursorPos(2, 2)
-	print(installerName or ("Installer for " .. githubUser .. "/" .. githubRepo .. ", branch " .. githubBranch))
-	term.setCursorPos(2, 4)
-	print("File: "..v)
-	term.setCursorPos(2, h - 1)
-	print(tostring(math.floor(filesDownloaded / fileCount * 100)).."% - "..tostring(filesDownloaded + 1).."/"..tostring(fileCount))
-	local ok = k:sub(1, 4) == "ext:" and httpGet(k:sub(5), v) or getFile(k, v)
-	if not ok then
-		if term.isColor() then
-			term.setTextColor(colors.red)
-		end
-		term.setCursorPos(2, 6)
-		print("Error getting file:")
-		term.setCursorPos(2, 7)
-		print(k)
-		sleep(1)
-	end
-	filesDownloaded = filesDownloaded + 1
-end
-clear()
-term.setCursorPos(2, 2)
-print("Press any key to continue.")
-local w, h = term.getSize()
-term.setCursorPos(2, h-1)
-print("100% - "..tostring(filesDownloaded).."/"..tostring(fileCount))
-os.pullEvent("key")
+term.setTextColor(colors.lightBlue)
+printCentered("BlueWorks Setup Wizard")
+print()
