@@ -1,4 +1,5 @@
 term.clear()
+term.setCursorPos(1, 1)
 if not term.isColor() then
 	error("BlueWorks cannot run with a standard computer! Upgrade to an advanced computer to use BlueWorks.", 0)	
 end
@@ -30,4 +31,3 @@ end
 term.setTextColor(colors.lightBlue)
 printCentered("BlueWorks Setup Wizard")
 print()
-
