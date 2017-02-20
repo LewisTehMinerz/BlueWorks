@@ -13,10 +13,18 @@ print([[
 
 function printCentered(text)
 	w, h = term.getSize()
+	xPos, yPos = term.getCursorPos()
 	term.setCursorPos(math.floor(w - #text)/2, yPos)
 	print(text)
 end
+function writeCentered(text, yPos)
+	w, h = term.getSize()
+	term.setCursorPos(math.floor(w - #text)/2, yPos)
+	write(text)
+end
+
 
 term.setTextColor(colors.lightBlue)
 printCentered("BlueWorks Setup Wizard")
 print()
+
