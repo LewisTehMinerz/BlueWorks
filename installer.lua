@@ -1,3 +1,8 @@
+if not term.isColor() then
+	error("BlueWorks requires an advanced computer to operate!", 0)
+end
+
+
 --MultHub/CCInstaller
 
 local files = {
