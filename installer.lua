@@ -1,3 +1,4 @@
+term.clear()
 if not term.isColor() then
 	error("BlueWorks cannot run with a standard computer! Upgrade to an advanced computer to use BlueWorks.", 0)	
 end
