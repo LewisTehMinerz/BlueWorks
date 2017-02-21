@@ -1,3 +1,12 @@
+local _DATA = {
+	instLoc = 10,
+	exitLoc = 12,
+	instLbl = "Install BlueWorks [I]",
+	exitLbl = "Exit Installer [E]",
+	instKey = keys.i,
+	exitKey = keys.e
+}
+
 term.clear()
 term.setCursorPos(1, 1)
 if not term.isColor() then
@@ -31,3 +40,18 @@ end
 term.setTextColor(colors.lightBlue)
 printCentered("BlueWorks Setup Wizard")
 print()
+term.setTextColor(colors.cyan)
+writeCentered(_DATA.instLbl, _DATA.instLoc)
+writeCentered(_DATA.exitLbl, _DATA.exitLoc)
+term.setBackgroundColor(colors.gray)
+while true do
+	local _, key = os.pullEvent("key")
+	if key = _DATA.exitKey then
+		write(_DATA.exitLbl, _DATA.exitLoc)
+		sleep(0.75)
+		break
+	else if key = _DATA.instKey then
+		write(_DATA.instLbl, _DATA.instLoc)
+		sleep(0.75)
+		break
+	end
