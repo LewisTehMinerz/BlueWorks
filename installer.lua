@@ -50,7 +50,7 @@ while true do
 		write(_DATA.exitLbl, _DATA.exitLoc)
 		sleep(0.75)
 		break
-	elif key == _DATA.instKey then
+	elseif key == _DATA.instKey then
 		write(_DATA.instLbl, _DATA.instLoc)
 		sleep(0.75)
 		break
