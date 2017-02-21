@@ -47,11 +47,11 @@ term.setBackgroundColor(colors.gray)
 while true do
 	local _, key = os.pullEvent("key")
 	if key == _DATA.exitKey then
-		write(_DATA.exitLbl, _DATA.exitLoc)
+		writeCentered(_DATA.exitLbl, _DATA.exitLoc)
 		sleep(0.75)
 		break
 	elseif key == _DATA.instKey then
-		write(_DATA.instLbl, _DATA.instLoc)
+		writeCentered(_DATA.instLbl, _DATA.instLoc)
 		sleep(0.75)
 		break
 	end
